@@ -1,9 +1,7 @@
-# JSSI Measurement Brief
+# JSSI Measurement Roadmap
 
-Plain-language field guide for the Jet Support Services paid-search measurement working session.
+Product roadmap for the Jet Support Services measurement working session. Thirty points, as vertical tabs: fix conversion tracking first, then an intelligence layer.
 
-Published with GitHub Pages from the root of `main`.
+https://darshakbhatt-aiproductlabs.github.io/jssi-measurement-brief/
 
-Live site: https://darshakbhatt-aiproductlabs.github.io/jssi-measurement-brief/
-
-Not an official JSSI website. Illustrative figures are not live account data.
+Not an official JSSI website. Sample figures are not live account data.
