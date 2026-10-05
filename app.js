@@ -12,6 +12,8 @@ const SLIDES = [
   ["safe", "How we use it"],
   ["roadmap", "Roadmap, now"],
   ["later", "Roadmap, after"],
+  ["copilot", "The copilot"],
+  ["stay", "Why it continues"],
   ["guard", "Guardrails"],
   ["close", "The close"],
 ];
@@ -268,13 +270,25 @@ function chrome() {
         <div class="card"><h2>Claude Desktop</h2><p>Where a later Monday brief would run, through a connector. Its own browser starts signed out. That browser is not your Chrome. Anthropic’s split: Chrome for the account you already have open. The desktop browser for a web task that should not touch your session.</p></div>
         <div class="card"><h2>Claude in Chrome</h2><p>The only one sitting in your login. Right for this audit. Wrong the moment the job has to run without you in the chair. Practitioners who automate browsers use it the same way: one look inside a real session, then an API or a script for anything that must repeat.</p></div>
       </div>
+      <h2 style="color:white;margin-top:1.3rem">It is also slow, and it spends tokens like a person rereading the screen</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h2>Time</h2>
+          <p>Each step waits for the page, then for the model, then for the next click. Ads plus two containers is dozens of screens. That is many minutes, and someone has to stay signed in the entire time. It does not run overnight, and it is not faster than a careful first audit.</p>
+        </div>
+        <div class="card">
+          <h2>Tokens</h2>
+          <p>Chrome does not ask a short question. Every step sends another view of the screen, and earlier screens stay in the conversation unless they are discarded. On this class of browser agent, one screenshot is a few thousand tokens. A ten-step task is often about 30,000 tokens if the history is trimmed, and well over 100,000 if every screen is kept. A raw dump of a single page can pass 100,000 tokens before a click.</p>
+        </div>
+      </div>
+      <p>An API request for the same conversion list is one structured answer. Walking the interface every Monday multiplies the time and the bill, and it is still less trustworthy than the API. That is a cost argument, separate from the safety one.</p>
       <h2 style="color:white;margin-top:1.3rem">What we graduate to</h2>
       <p>Claude Desktop, asking Google’s own connectors. The official Ads connector is read-only: it can report, it cannot change a budget. Analytics has an official connector for properties, reports, and funnels. Tag Manager has an API that can describe tags, triggers, versions, and permissions. A person still approves anything that changes the live account. Your IT and security team decides whether a production account is connected. A connector does not skip OAuth, the Ads developer token, or your review.</p>
       <div class="vids" style="margin-top:1rem">
         ${vid("rBJnWMD0Pho", "What Chrome actually does", "Anthropic · 1 minute 35 seconds")}
         ${vid("IypXvHej9eY", "Why the permissions matter", "Anthropic · about 1 minute")}
       </div>
-      <p style="margin-top:0.8rem">Sources, if someone asks. <a href="https://claude.com/blog/cowork-built-in-browser">Anthropic on the two browsers</a>. <a href="https://support.claude.com/en/articles/12902428-use-claude-in-chrome-safely">Using Chrome safely</a>. <a href="https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server">Google’s read-only Ads connector</a>. <a href="https://github.com/googleanalytics/google-analytics-mcp">Analytics connector</a>.</p>
+      <p style="margin-top:0.8rem">Sources, if someone asks. <a href="https://claude.com/blog/cowork-built-in-browser">Anthropic on the two browsers</a>. <a href="https://support.claude.com/en/articles/12902428-use-claude-in-chrome-safely">Using Chrome safely</a>. <a href="https://getnadir.com/blog/browser-agent-token-cost-screenshots-accessibility-tree/">What a browser step costs in tokens</a>. <a href="https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server">Google’s read-only Ads connector</a>. <a href="https://github.com/googleanalytics/google-analytics-mcp">Analytics connector</a>.</p>
     </div>
   </article>`;
 }
@@ -331,7 +345,7 @@ function later() {
   return `<article class="slide">
     <p class="kicker">13 · Roadmap · only after the count is real</p>
     <h1>Nine products. Each one reads your systems. None of them replaces them.</h1>
-    <p class="say">This is Track B. It is a product line, not a promise for Thursday. The trigger to start any of them is the same: both sites report the action you chose, and your IT team has agreed how a connector is allowed to see the account.</p>
+    <p class="say">This is Track B, held in one product, not nine separate tools. Nothing here starts until both sites report the action you chose, and until your IT team has agreed how a connector may see the account.</p>
     <div class="card" style="overflow-x:auto">
       <table>
         <thead><tr><th>Product</th><th>The question</th><th>What it does</th></tr></thead>
@@ -356,9 +370,78 @@ function later() {
   </article>`;
 }
 
+function copilot() {
+  return `<article class="slide">
+    <p class="kicker">14 · The product after the repair</p>
+    <h1>One copilot. It shows its evidence, and it cannot publish.</h1>
+    <p class="say">JSSI Marketing Measurement Copilot is the name for Track B. It is not a chatbot beside Ads. It is a read-only audit of the accounts you choose, a finding you can check, and a change that waits for you. We build it on sample data first. No one hands over a production password to make the prototype.</p>
+    <div class="flow">
+      <span>Audit</span><i>→</i><span>Explain</span><i>→</i><span>Propose</span><i>→</i><span>You approve</span><i>→</i><span>Implement</span><i>→</i><span>Test</span><i>→</i><span>You publish</span>
+    </div>
+    <p>The model is not allowed to skip from audit to a live change. Writes stay off. Budgets, bids, campaigns, and consent are not tools it has.</p>
+    <div class="grid-2" style="margin-top:0.8rem">
+      <div class="card" style="background:#0e1726;color:#f6f3ec">
+        <p class="kicker">Sample · not your account</p>
+        <h2 style="color:white">Measurement health · 87</h2>
+        <p style="color:#ddd6ca">Ads 74 · Tag Manager 91 · Consistency 68. One high finding. Two medium. Containers are selected after sign-in. Nothing is hard-coded.</p>
+        <p style="color:white"><strong>High · possible ID mismatch.</strong> Ads conversion ID and the tag on the Conklin container do not match. jetsupport.com matches. Confidence is high because both values are on the record. We still do not call it broken until Preview shows the tag dark.</p>
+      </div>
+      <div class="card">
+        <h2>What every finding has to carry</h2>
+        <ul class="clean">
+          <li>The finding, stated as possible until the evidence is enough.</li>
+          <li>The evidence: the two IDs, the trigger, the container.</li>
+          <li>Why it matters to this test.</li>
+          <li>The likely cause.</li>
+          <li>The recommended action.</li>
+          <li>Confidence: high, medium, or low.</li>
+          <li>A link back to the row it came from. No unsupported sentence.</li>
+        </ul>
+      </div>
+    </div>
+    <h2>What the first version actually contains</h2>
+    <div class="grid-3">
+      <div class="card"><h2>Read</h2><p>Ads conversion actions and both containers you select: tags, triggers, variables, versions. The map is conversion, then ID and label, then tag, then trigger, then the event on the site.</p></div>
+      <div class="card"><h2>Ask</h2><p>Which conversions look wrong. Are the two containers consistent. What would explain under-reported leads. Show the evidence. The answer may only use connected data.</p></div>
+      <div class="card"><h2>Approve</h2><p>Current state, proposed state, impact, risk, rollback. Approve, reject, or edit the proposal. The log stores who approved it and what happened. Publish stays with you.</p></div>
+    </div>
+    <p>Chrome remains optional, and only for what an API cannot see: Preview, the console, a screenshot of a screen that has no export. The page is data. It is never an instruction. The copilot does not wander off an allowlist of Ads, Tag Manager, and your two sites.</p>
+  </article>`;
+}
+
+function stay() {
+  return `<article class="slide">
+    <p class="kicker">15 · What is worth doing next, and what is not</p>
+    <h1>A repaired tag expires the next time someone publishes.</h1>
+    <p class="say">The audit is a project. The value that remains is a watch on the count, an answer when leads move, and a warning before a trigger change ships. That is the work worth continuing. An agent that edits Ads on its own is not. It would be refused by your security team, and it is the wrong first product.</p>
+    <div class="card" style="overflow-x:auto">
+      <table>
+        <thead><tr><th>In this order</th><th>What JSSI gets</th><th>Why it waits</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1 · Health, every week</strong></td><td>A score and one sentence. Quiet, warning, or wrong, across Ads and both containers.</td><td>Starts the week the repair is believed. This is the thing that catches the next break.</td></tr>
+          <tr><td><strong>2 · Why leads moved</strong></td><td>Campaign, search term, landing page, then a call: demand, media, the page, or the tag. Evidence on each.</td><td>The question a director will ask. Useless until the conversion means what the sentence says.</td></tr>
+          <tr><td><strong>3 · Monday note</strong></td><td>What changed, what not to conclude, who needs to look. For people who will not open Ads.</td><td>After the health check has been right for a few weeks. Otherwise it launders a bad number.</td></tr>
+          <tr><td><strong>4 · Before a publish</strong></td><td>This trigger feeds these tags, these conversions, these live campaigns.</td><td>Once versions are being read reliably. It belongs in the release, not in a side chat.</td></tr>
+          <tr><td><strong>5 · A change, much later</strong></td><td>One approved edit, then a check, then a log. Writes exist, and they are off until then.</td><td>Only after the read-only system has been trusted. Not in the first build.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-2" style="margin-top:0.8rem">
+      <div class="card">
+        <span class="tag now">Worth building</span>
+        <p>Read-only Ads and Tag Manager. You pick the containers. Findings with confidence. An audit log. An approval card that does not press itself. Sample data until IT agrees a connector.</p>
+      </div>
+      <div class="card">
+        <span class="tag no">Not in the first build</span>
+        <p>A generic chat. Automatic publish. Budget or bid tools. Write access handed to the model. A warehouse. Anything that needs a production password to demonstrate.</p>
+      </div>
+    </div>
+  </article>`;
+}
+
 function guard() {
   return `<article class="slide">
-    <p class="kicker">14 · What stays human, even later</p>
+    <p class="kicker">16 · What stays human, even later</p>
     <h1>It proposes. You approve. The result is checked and written down.</h1>
     <p class="say">These rules hold on Thursday, and they still hold if the system gets smarter. Smarter is not the same as allowed.</p>
     <div class="grid-2">
@@ -391,7 +474,7 @@ function guard() {
 
 function close() {
   return `<article class="slide">
-    <p class="kicker">15 · How we work, and what to leave them with</p>
+    <p class="kicker">17 · How we work, and what to leave them with</p>
     <h1>You keep the account. I run the debugging with you.</h1>
     <p class="say">The gap is not access. You have admin. The gap is hours, and a way to see the setup without Jon on the call. I am not taking the media buying.</p>
     <div class="grid-2">
@@ -440,7 +523,7 @@ function close() {
   </article>`;
 }
 
-const PAGES = { title, situation, problem, why, recommend, architecture, count, actions, proof, chrome, safe, roadmap, later, guard, close };
+const PAGES = { title, situation, problem, why, recommend, architecture, count, actions, proof, chrome, safe, roadmap, later, copilot, stay, guard, close };
 
 function renderNav(id) {
   document.getElementById("nav").innerHTML = SLIDES.map((s, i) => {
