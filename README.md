@@ -1,6 +1,6 @@
-# JSSI Measurement Roadmap
+# Measurement first
 
-Product roadmap for the Jet Support Services measurement working session. Thirty points, as vertical tabs: fix conversion tracking first, then an intelligence layer.
+Pitch deck for the JSSI working session. Fifteen slides. Arrow keys to move.
 
 https://darshakbhatt-aiproductlabs.github.io/jssi-measurement-brief/
 
