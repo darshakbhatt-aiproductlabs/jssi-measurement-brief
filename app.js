@@ -374,7 +374,7 @@ function copilot() {
   return `<article class="slide">
     <p class="kicker">14 · The product after the repair</p>
     <h1>One copilot. It shows its evidence, and it cannot publish.</h1>
-    <p class="say">JSSI Marketing Measurement Copilot is the name for Track B. It is not a chatbot beside Ads. It is a read-only audit of the accounts you choose, a finding you can check, and a change that waits for you. We build it on sample data first. No one hands over a production password to make the prototype.</p>
+    <p class="say">JSSI Marketing Measurement Copilot is Track B, as a product you can open. It is not a chatbot beside Ads. Sample data only. No production password. <a href="copilot/">Open the prototype</a>.</p>
     <div class="flow">
       <span>Audit</span><i>→</i><span>Explain</span><i>→</i><span>Propose</span><i>→</i><span>You approve</span><i>→</i><span>Implement</span><i>→</i><span>Test</span><i>→</i><span>You publish</span>
     </div>
@@ -474,9 +474,10 @@ function guard() {
 
 function close() {
   return `<article class="slide">
-    <p class="kicker">17 · How we work, and what to leave them with</p>
-    <h1>You keep the account. I run the debugging with you.</h1>
-    <p class="say">The gap is not access. You have admin. The gap is hours, and a way to see the setup without Jon on the call. I am not taking the media buying.</p>
+    <p class="kicker">17 · What to leave on the table</p>
+    <h1>The audit is the work. The copilot is how it stays true.</h1>
+    <p class="say">The first block repairs the count. After that, the same evidence lives in a product you can open: findings, a proposed change, and a publish button that stays with you. The prototype uses sample data. It is not connected to your accounts.</p>
+    <p><a href="copilot/">Open the Measurement Copilot</a></p>
     <div class="grid-2">
       <div class="card">
         <h2>I take</h2>
