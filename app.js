@@ -16,6 +16,7 @@ const SLIDES = [
   ["stay", "Why it continues"],
   ["guard", "Guardrails"],
   ["close", "The close"],
+  ["talk", "How to say it"],
 ];
 
 function vid(id, title, meta) {
@@ -524,7 +525,65 @@ function close() {
   </article>`;
 }
 
-const PAGES = { title, situation, problem, why, recommend, architecture, count, actions, proof, chrome, safe, roadmap, later, copilot, stay, guard, close };
+function talk() {
+  return `<article class="slide">
+    <p class="kicker">18 · Say this, in this order</p>
+    <h1>Five beats. Plain enough to say without the slides.</h1>
+    <p class="say">If the room only has a few minutes, walk these five. The detail is under each one, for the moment someone asks “why not just use Chrome?”</p>
+    <article class="card">
+      <p class="kicker">1 · Why not Claude in Chrome, to start</p>
+      <h2>It reads the screen. It does not read the account.</h2>
+      <p>Chrome looks at whatever Google has drawn on the page right now. Those pieces are called DOM elements: the buttons, the rows, the labels. Ads and Tag Manager do not put the whole account on the screen at once. So the extension can miss a conversion that is real, simply because that row was not painted.</p>
+      <ul class="clean">
+        <li><strong>Only the visible rows exist.</strong> Long lists are virtualized. Tags below the fold are not in the page until someone scrolls. “I don’t see it” can mean “I didn’t scroll.”</li>
+        <li><strong>The labels are not stable.</strong> Google rebuilds the page. A button’s internal id changes on refresh. A recipe that clicks “the third row” is a guess about today’s screen, not a check you can run on Monday.</li>
+        <li><strong>Some proof is not in that page.</strong> Preview opens another window. The request that proves a conversion fired sits in the network panel. Frames inside the page can hide the very field you need.</li>
+        <li><strong>It only sees the account that is open.</strong> You have two containers. The screen holds one. It is easy to audit the wrong one and sound sure.</li>
+        <li><strong>Empty can mean “still loading.”</strong> These pages show a skeleton first. Read it too early and “no tags” is a lie.</li>
+        <li><strong>The login is the whole key.</strong> There is no permission that says “read conversions only.” The browser session can also change a budget.</li>
+        <li><strong>Every look is another screen sent to the model.</strong> Two containers plus Ads is dozens of screens, minutes, and a large token bill. One API call returns the same list.</li>
+      </ul>
+      <p>Use Chrome later, and narrowly: to watch Preview, the console, and the network panel. Those things have no clean export. Do not use it to learn what is configured. Configuration already has an official interface.</p>
+    </article>
+    <article class="card">
+      <p class="kicker">2 · What we do instead</p>
+      <h2>Read the systems. Then rehearse the journey. Then you publish.</h2>
+      <p>Agree what a lead is. Pull conversion actions from the Google Ads API, and tags, triggers, and versions from the Tag Manager API. Match the conversion id and the label across both sites. Where they disagree, write the evidence. Then a person walks the real path in Preview, with dummy details, once on each site. Chrome may sit in for that rehearsal. It does not get to decide the inventory, and it does not publish.</p>
+    </article>
+    <article class="card">
+      <p class="kicker">3 · The architecture, in one breath</p>
+      <h2>The copilot sits beside the systems. It is not in the middle of them.</h2>
+      <div class="flow">
+        <span>Two websites</span><i>→</i>
+        <span>Two Tag Manager containers, read by API</span><i>→</i>
+        <span>Ads, the counter, read by API</span><i>→</i>
+        <span>Copilot: map, finding, evidence</span><i>→</i>
+        <span>You approve</span><i>→</i>
+        <span>You publish</span>
+      </div>
+      <p>Analytics is the cross-check, not the verdict. Chrome is a side door for Preview only. The page is data. It is never an instruction. Writes stay off until a later phase, and even then a person publishes.</p>
+    </article>
+    <article class="card">
+      <p class="kicker">4 · Where we are today</p>
+      <h2>A method, and a sample. Not a finding about your account.</h2>
+      <p>We have not opened the live account. The deck is how the work runs. The copilot is a sample built to show the operating model: Contact click is what bidding is allowed to chase, the Conklin tag carries a different label than the qualified lead, the linker is missing on that container, and Publish is locked. If they treat 71 as their score, stop and say it is invented.</p>
+    </article>
+    <article class="card">
+      <p class="kicker">5 · Roadmap, and what gets better later</p>
+      <h2>The repair is a project. The watch is the product.</h2>
+      <ul class="clean">
+        <li><strong>Now.</strong> Definition, API inventory of both containers, Preview on both hosts, a named version, you publish, we watch for days.</li>
+        <li><strong>Next.</strong> A weekly health read from the same APIs, so the next trigger change does not sit unnoticed.</li>
+        <li><strong>Then.</strong> “Why did leads move?” and a Monday note. Only after the count means what the sentence says.</li>
+        <li><strong>Before a publish.</strong> Which live campaigns depend on the trigger someone just edited.</li>
+        <li><strong>Much later.</strong> One approved edit in a workspace. Still no self-publish.</li>
+      </ul>
+      <p>The optimization is to stop rereading screens. Keep the last API snapshot. Diff the container version. Alert when the version changes, not when a button moves. That is faster, cheaper, and you can show the exact response. A browser walk cannot be that.</p>
+    </article>
+  </article>`;
+}
+
+const PAGES = { title, situation, problem, why, recommend, architecture, count, actions, proof, chrome, safe, roadmap, later, copilot, stay, guard, close, talk };
 
 function renderNav(id) {
   document.getElementById("nav").innerHTML = SLIDES.map((s, i) => {

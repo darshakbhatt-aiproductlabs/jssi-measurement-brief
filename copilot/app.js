@@ -7,6 +7,7 @@ const VIEWS = [
   ["approval", "Approval"],
   ["ask", "Ask"],
   ["log", "Audit log"],
+  ["say", "How to say it"],
 ];
 
 const CONVERSIONS = [
@@ -408,6 +409,32 @@ function ask() {
     </article>`;
 }
 
+function say() {
+  return `
+    <h1>How to say it</h1>
+    <p class="lede">Five beats, in order. This is the talk, not another dashboard.</p>
+    <article class="card">
+      <h2>1. Why not Chrome, to start</h2>
+      <p>It reads the screen, not the account. Ads and Tag Manager only draw the rows that fit. Anything you have to scroll to, open, or switch accounts for is invisible. The button names change. The extension can miss a real tag, audit the wrong container, or read a loading skeleton as “nothing is here.” It also holds the whole login, and every look is another screen sent to the model. Use it later, only to watch Preview. Not to learn the setup.</p>
+    </article>
+    <article class="card">
+      <h2>2. What to do</h2>
+      <p>Agree what a lead is. Read conversion actions from the Ads API, and tags, triggers, and versions from the Tag Manager API. Match the id and the label on both sites. Then a person rehearses the journey in Preview. You publish. Chrome does not.</p>
+    </article>
+    <article class="card">
+      <h2>3. The architecture</h2>
+      <p>Websites, then the two containers, then Ads. The copilot sits beside them and reads them. Analytics cross-checks. Chrome is a side door for Preview only. The page is data, never an instruction.</p>
+    </article>
+    <article class="card">
+      <h2>4. Current state</h2>
+      <p>This screen is a sample. Contact click is primary. The Conklin label does not match the qualified lead. The linker is missing there. Publish is locked. None of that is a finding about the live account. We have not opened it.</p>
+    </article>
+    <article class="card">
+      <h2>5. Roadmap, and what gets cheaper later</h2>
+      <p>Now: inventory, Preview, you publish, we watch. Next: a weekly health read from the APIs. Then: why leads moved, and a Monday note. Before a publish: which campaigns use that trigger. Much later: one approved edit, still no self-publish. The improvement is to keep the last API snapshot and alert when the container version changes, instead of rereading the screen.</p>
+    </article>`;
+}
+
 function log() {
   return `
     <h1>Audit log</h1>
@@ -417,7 +444,7 @@ function log() {
     </div>`;
 }
 
-const PAGES = { health, ads, containers, map, findings, approval, ask, log };
+const PAGES = { health, ads, containers, map, findings, approval, ask, log, say };
 
 function render() {
   document.getElementById("crumb").textContent = (VIEWS.find((v) => v[0] === state.view) || VIEWS[0])[1];
